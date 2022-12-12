@@ -30,6 +30,7 @@ public class BloodDonorController {
 		return new ResponseEntity<>(service.addNewDonor(dao),HttpStatus.CREATED);
 	}
 	
+	
 	//localhost:8085/bloodbank/donors
 	//fetch donors 
 	@GetMapping("donors")
