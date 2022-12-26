@@ -26,9 +26,10 @@ public class BloodDonorUtil {
 		 entity.setCity(dao.getCity());
 		 entity.setPincode(dao.getPincode());
 		 entity.setReadytoDonate(dao.isReadytoDonate());
+		 entity.setMartialStatus(dao.getMartialStatus());
 		return entity;
 	 }
-	 //cpnvert be entity to fe dao
+	 //convert be entity to fe dao
 	 public static BloodDonorDAO createBloodDonorDAO(BloodDonorEnitity entity) {
 		 BloodDonorDAO dao=new BloodDonorDAO();
 		 dao.setId(entity.getId());
@@ -45,6 +46,7 @@ public class BloodDonorUtil {
 		 dao.setCity(entity.getCity());
 		 dao.setPincode(entity.getPincode());
 		 dao.setReadytoDonate(entity.isReadytoDonate());
+		 dao.setMartialStatus(entity.getMartialStatus());
 		return dao;
 	 }
 	 //list of dao
