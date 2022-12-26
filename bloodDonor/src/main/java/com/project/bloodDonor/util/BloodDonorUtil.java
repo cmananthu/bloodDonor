@@ -9,6 +9,7 @@ import com.project.bloodDonor.entity.BloodDonorEnitity;
 
 public class BloodDonorUtil {
 	
+	
 	//convert fe dao to be entity
 	 public static BloodDonorEnitity createBloodDonorEntity(BloodDonorDAO dao) {
 		 BloodDonorEnitity entity=new BloodDonorEnitity();

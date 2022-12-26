@@ -13,6 +13,7 @@ import com.project.bloodDonor.util.BloodDonorUtil;
 
 @Service
 public class BloodDonorServiceImpl implements BloodDonorService{
+	
 	@Autowired
 	BloodDonorRepository repo;
 

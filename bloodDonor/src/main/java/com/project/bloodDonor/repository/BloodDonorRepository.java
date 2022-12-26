@@ -1,5 +1,4 @@
 package com.project.bloodDonor.repository;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.bloodDonor.entity.BloodDonorEnitity;

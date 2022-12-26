@@ -1,7 +1,5 @@
 package com.project.bloodDonor.entity;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

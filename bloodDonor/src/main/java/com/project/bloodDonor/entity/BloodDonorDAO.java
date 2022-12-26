@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BloodDonorDAO {
+	
 	private int id;
 	@JsonProperty("name")
 	private String donorName;

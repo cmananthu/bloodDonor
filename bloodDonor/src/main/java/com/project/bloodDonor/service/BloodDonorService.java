@@ -9,6 +9,7 @@ public interface BloodDonorService {
 	
 	 BloodDonorEnitity addNewDonor(BloodDonorDAO dao) ;
 	 List<BloodDonorDAO> getAllusers();
+	 
 	// BloodDonorDAO getUserById(int id);
 	 String deleteDonor(int id);
 	 

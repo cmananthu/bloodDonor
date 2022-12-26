@@ -17,6 +17,7 @@ import com.project.bloodDonor.entity.BloodDonorDAO;
 import com.project.bloodDonor.entity.BloodDonorEnitity;
 import com.project.bloodDonor.service.BloodDonorService;
 import com.project.bloodDonor.serviceImpl.BloodDonorServiceImpl;
+
 @CrossOrigin("*") 
 @RestController
 public class BloodDonorController {
