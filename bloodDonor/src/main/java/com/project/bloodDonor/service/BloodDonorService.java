@@ -12,5 +12,6 @@ public interface BloodDonorService {
 	 
 	// BloodDonorDAO getUserById(int id);
 	 String deleteDonor(int id);
-	 
+	 //get donor data
+	 Object getMyProfile(String email);
 }

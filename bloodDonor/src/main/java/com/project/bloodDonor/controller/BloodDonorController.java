@@ -39,6 +39,11 @@ public class BloodDonorController {
 	public ResponseEntity<Object> getUsers(){
 		return new ResponseEntity<>(service.getAllusers(),HttpStatus.OK);
 	}
+	//localhost:8085/bloodbank/myprofile/email
+	@GetMapping("myprofile/{email}")
+	public ResponseEntity<Object> getMyProfile(@PathVariable("email") String email){
+		return new ResponseEntity<>(service.getMyProfile(email),HttpStatus.OK);
+	}
 	
 
 //	localhost:8085/bloodbank/delete/10

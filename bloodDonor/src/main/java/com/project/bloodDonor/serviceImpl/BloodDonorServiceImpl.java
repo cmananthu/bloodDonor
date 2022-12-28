@@ -44,6 +44,13 @@ public class BloodDonorServiceImpl implements BloodDonorService{
 		return "succesfully deleted donor";
 	}
 
+	@Override
+	public Object getMyProfile(String email) {
+		BloodDonorEnitity e=repo.findByEmail(email);
+		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(e);
+		return dao;
+	}
+
 	
 	
 	
