@@ -51,6 +51,13 @@ public class BloodDonorServiceImpl implements BloodDonorService{
 		return dao;
 	}
 
+	@Override
+	public BloodDonorEnitity updateDonor(BloodDonorDAO dao) {
+       BloodDonorEnitity entity=BloodDonorUtil.createBloodDonorEntity(dao);
+		
+		return repo.save(entity);
+	}
+
 	
 	
 	

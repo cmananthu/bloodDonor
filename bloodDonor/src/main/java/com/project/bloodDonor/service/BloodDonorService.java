@@ -14,4 +14,7 @@ public interface BloodDonorService {
 	 String deleteDonor(int id);
 	 //get donor data
 	 Object getMyProfile(String email);
+	 
+	 //update user
+	 BloodDonorEnitity updateDonor(BloodDonorDAO dao) ;
 }

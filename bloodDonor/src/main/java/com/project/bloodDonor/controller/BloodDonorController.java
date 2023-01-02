@@ -51,4 +51,12 @@ public class BloodDonorController {
 	public ResponseEntity<String> deleteUsers(@PathVariable int id){
 		return new ResponseEntity<>(service.deleteDonor(id),HttpStatus.OK);
 	}
+	
+//	localhost:8085/bloodbank/update 
+//	endpoint to updatge donor details
+	@PutMapping("update")
+	public ResponseEntity<Object> updateDonorDetails( @Validated @RequestBody BloodDonorDAO dao){
+		return new ResponseEntity<>(service.addNewDonor(dao),HttpStatus.OK);
+	}
+	
 }
