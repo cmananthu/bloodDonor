@@ -58,6 +58,13 @@ public class BloodDonorServiceImpl implements BloodDonorService{
 		return repo.save(entity);
 	}
 
+	@Override
+	public BloodDonorDAO findUserById(int id) {
+		BloodDonorEnitity ent=repo.findById(id);
+		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(ent);
+		return dao;
+	}
+
 	
 	
 	

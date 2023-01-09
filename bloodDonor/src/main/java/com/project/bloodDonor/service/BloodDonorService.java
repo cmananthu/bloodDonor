@@ -17,4 +17,7 @@ public interface BloodDonorService {
 	 
 	 //update user
 	 BloodDonorEnitity updateDonor(BloodDonorDAO dao) ;
+	 
+	 //find user by id
+	 BloodDonorDAO findUserById(int id);
 }

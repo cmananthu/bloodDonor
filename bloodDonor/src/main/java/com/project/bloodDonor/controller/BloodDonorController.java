@@ -53,10 +53,17 @@ public class BloodDonorController {
 	}
 	
 //	localhost:8085/bloodbank/update 
-//	endpoint to updatge donor details
+//	endpoint to update donor details
 	@PutMapping("update")
 	public ResponseEntity<Object> updateDonorDetails( @Validated @RequestBody BloodDonorDAO dao){
 		return new ResponseEntity<>(service.addNewDonor(dao),HttpStatus.OK);
 	}
 	
+	//localhost:8085/bloodbank/donors/1
+	//end point to fetch details of  donor by id
+	@GetMapping("donors/{id}")
+	public ResponseEntity<Object> getById(@PathVariable("id") int id){
+		return new ResponseEntity<>(service.findUserById(id),HttpStatus.OK);
+	}
+	 
 }
