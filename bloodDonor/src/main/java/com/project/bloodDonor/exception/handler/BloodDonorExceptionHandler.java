@@ -1,0 +1,15 @@
+package com.project.bloodDonor.exception.handler;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class BloodDonorExceptionHandler {
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public ResponseEntity<Object> exception(MethodArgumentNotValidException exception) {
+	      return new ResponseEntity<>(exception.getBindingResult().getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+	   }
+}
