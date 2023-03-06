@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class BloodDonorExceptionHandler {
-	
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> exception(MethodArgumentNotValidException exception) {
 	      return new ResponseEntity<>(exception.getBindingResult().getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
