@@ -129,7 +129,6 @@ public class BloodDonorDAO {
 	public String getMartialStatus() {
 		return martialStatus;
 	}
-	
 	public void setMartialStatus(String martialStatus) {
 		this.martialStatus = martialStatus;
 	}
