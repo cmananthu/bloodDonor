@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.bloodDonor.custom.exceptions.UserAlreadyDeletedException;
+import com.project.bloodDonor.custom.exceptions.UserNotFoundException;
 import com.project.bloodDonor.entity.BloodDonorDAO;
 import com.project.bloodDonor.entity.BloodDonorEnitity;
 import com.project.bloodDonor.service.BloodDonorService;
@@ -41,14 +43,16 @@ public class BloodDonorController {
 	}
 	//localhost:8085/bloodbank/myprofile/email
 	@GetMapping("myprofile/{email}")
-	public ResponseEntity<Object> getMyProfile(@PathVariable("email") String email){
-		return new ResponseEntity<>(service.getMyProfile(email),HttpStatus.OK);
+	public ResponseEntity<Object> getMyProfile(@PathVariable("email") String email) throws UserNotFoundException{
+		
+			return new ResponseEntity<>(service.getMyProfile(email),HttpStatus.OK);
+		
 	}
 	
 
 //	localhost:8085/bloodbank/delete/10
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<String> deleteUsers(@PathVariable int id){
+	public ResponseEntity<Object> deleteUsers(@PathVariable int id) throws UserAlreadyDeletedException{
 		return new ResponseEntity<>(service.deleteDonor(id),HttpStatus.OK);
 	}
 	
@@ -62,7 +66,7 @@ public class BloodDonorController {
 	//localhost:8085/bloodbank/donors/1
 	//end point to fetch details of  donor by id
 	@GetMapping("donors/{id}")
-	public ResponseEntity<Object> getById(@PathVariable("id") int id){
+	public ResponseEntity<Object> getById(@PathVariable("id") int id) throws UserNotFoundException{
 		return new ResponseEntity<>(service.findUserById(id),HttpStatus.OK);
 	}
 	 
