@@ -2,6 +2,8 @@ package com.project.bloodDonor.service;
 
 import java.util.List;
 
+import com.project.bloodDonor.custom.exceptions.UserAlreadyDeletedException;
+import com.project.bloodDonor.custom.exceptions.UserNotFoundException;
 import com.project.bloodDonor.entity.BloodDonorDAO;
 import com.project.bloodDonor.entity.BloodDonorEnitity;
 
@@ -11,13 +13,13 @@ public interface BloodDonorService {
 	 List<BloodDonorDAO> getAllusers();
 	 
 	// BloodDonorDAO getUserById(int id);
-	 String deleteDonor(int id);
+	 Object deleteDonor(int id) throws UserAlreadyDeletedException;
 	 //get donor data
-	 Object getMyProfile(String email);
+	 Object getMyProfile(String email) throws UserNotFoundException;
 	 
 	 //update user
 	 BloodDonorEnitity updateDonor(BloodDonorDAO dao) ;
 	 
 	 //find user by id
-	 BloodDonorDAO findUserById(int id);
+	 BloodDonorDAO findUserById(int id) throws UserNotFoundException;
 }

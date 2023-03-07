@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.bloodDonor.custom.exceptions.UserAlreadyDeletedException;
+import com.project.bloodDonor.custom.exceptions.UserNotFoundException;
 import com.project.bloodDonor.entity.BloodDonorDAO;
 import com.project.bloodDonor.entity.BloodDonorEnitity;
 import com.project.bloodDonor.repository.BloodDonorRepository;
@@ -39,16 +41,23 @@ public class BloodDonorServiceImpl implements BloodDonorService{
 //	}
 
 	@Override
-	public String deleteDonor(int id) {
-		repo.deleteById(id);
-		return "succesfully deleted donor";
+	public Object deleteDonor(int id) throws UserAlreadyDeletedException {
+		try {
+			repo.deleteById(id);
+			return "succesfully deleted donor";
+		}catch(Exception e) {
+			throw new UserAlreadyDeletedException("user with id "+id+" doesn't exists");}
+		
 	}
 
 	@Override
-	public Object getMyProfile(String email) {
+	public Object getMyProfile(String email) throws UserNotFoundException {
 		BloodDonorEnitity e=repo.findByEmail(email);
+		if(null!=e) {
 		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(e);
 		return dao;
+		}else
+			throw new UserNotFoundException("user "+email+" not found");
 	}
 
 	@Override
@@ -59,10 +68,13 @@ public class BloodDonorServiceImpl implements BloodDonorService{
 	}
 
 	@Override
-	public BloodDonorDAO findUserById(int id) {
+	public BloodDonorDAO findUserById(int id) throws UserNotFoundException {
 		BloodDonorEnitity ent=repo.findById(id);
+		if(null!=ent) {
 		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(ent);
 		return dao;
+		}else 
+			throw new UserNotFoundException("user with id "+id+" not found");
 	}
 
 	
