@@ -14,7 +14,7 @@ public class BloodDonorExceptionHandler {
 	//handle exception cause due to input validation
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> exception(MethodArgumentNotValidException exception) {
-	      return new ResponseEntity<>(exception.getBindingResult().getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+	      return new ResponseEntity<>(exception.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
 	   }
 	
 	 //handle UserNotFoundException. This is throws when find by id and find by email operation is done
