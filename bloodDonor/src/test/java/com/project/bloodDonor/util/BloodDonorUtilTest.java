@@ -3,6 +3,8 @@ package com.project.bloodDonor.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.bloodDonor.entity.BloodDonorDAO;
 import com.project.bloodDonor.entity.BloodDonorEnitity;
 
@@ -48,5 +50,11 @@ public class BloodDonorUtilTest {
 	   lst.add(prepareBloodDonorDAO());
 	   return lst;
    }
+   
+   //convert obj to json
+   private static final ObjectMapper objectMapper = new ObjectMapper();
 
+   public static String toJson(Object object) throws JsonProcessingException {
+       return objectMapper.writeValueAsString(object);
+   }
 }
