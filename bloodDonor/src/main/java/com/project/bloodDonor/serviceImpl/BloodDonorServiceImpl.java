@@ -14,71 +14,62 @@ import com.project.bloodDonor.service.BloodDonorService;
 import com.project.bloodDonor.util.BloodDonorUtil;
 
 @Service
-public class BloodDonorServiceImpl implements BloodDonorService{
-	
+public class BloodDonorServiceImpl implements BloodDonorService {
+
 	@Autowired
 	BloodDonorRepository repo;
 
-	//add new donor
+	// add new donor
 	@Override
 	public BloodDonorEnitity addNewDonor(BloodDonorDAO dao) {
-		BloodDonorEnitity entity=BloodDonorUtil.createBloodDonorEntity(dao);
-		
+		BloodDonorEnitity entity = BloodDonorUtil.createBloodDonorEntity(dao);
+
 		return repo.save(entity);
 	}
 
-	//find all donor
+	// find all donor
 	@Override
 	public List<BloodDonorDAO> getAllusers() {
-		
-			return BloodDonorUtil.createListofBloodDonorDAO(repo.findAll());
+
+		return BloodDonorUtil.createListofBloodDonorDAO(repo.findAll());
 
 	}
-//
-//	@Override
-//	public BloodDonorDAO getUserById(int id) {
-//		//return BloodDonorUtil.createBloodDonorDAO(repo.findById(id));
-//	}
 
 	@Override
 	public Object deleteDonor(int id) throws UserAlreadyDeletedException {
 		try {
 			repo.deleteById(id);
 			return "succesfully deleted donor";
-		}catch(Exception e) {
-			throw new UserAlreadyDeletedException("user with id "+id+" doesn't exists");}
-		
+		} catch (Exception e) {
+			throw new UserAlreadyDeletedException("user with id " + id + " doesn't exists");
+		}
+
 	}
 
 	@Override
 	public Object getMyProfile(String email) throws UserNotFoundException {
-		BloodDonorEnitity e=repo.findByEmail(email);
-		if(null!=e) {
-		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(e);
-		return dao;
-		}else
-			throw new UserNotFoundException("user "+email+" not found");
+		BloodDonorEnitity e = repo.findByEmail(email);
+		if (null != e) {
+			return BloodDonorUtil.createBloodDonorDAO(e);
+
+		} else
+			throw new UserNotFoundException("user " + email + " not found");
 	}
 
 	@Override
 	public BloodDonorEnitity updateDonor(BloodDonorDAO dao) {
-       BloodDonorEnitity entity=BloodDonorUtil.createBloodDonorEntity(dao);
-		
+		BloodDonorEnitity entity = BloodDonorUtil.createBloodDonorEntity(dao);
+
 		return repo.save(entity);
 	}
 
 	@Override
 	public BloodDonorDAO findUserById(int id) throws UserNotFoundException {
-		BloodDonorEnitity ent=repo.findById(id);
-		if(null!=ent) {
-		BloodDonorDAO dao=BloodDonorUtil.createBloodDonorDAO(ent);
-		return dao;
-		}else 
-			throw new UserNotFoundException("user with id "+id+" not found");
+		BloodDonorEnitity ent = repo.findById(id);
+		if (null != ent) {
+			return BloodDonorUtil.createBloodDonorDAO(ent);
+		} else
+			throw new UserNotFoundException("user with id " + id + " not found");
 	}
-
-	
-	
-	
 
 }
