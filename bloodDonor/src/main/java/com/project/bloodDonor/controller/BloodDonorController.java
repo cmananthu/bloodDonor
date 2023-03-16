@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.bloodDonor.custom.exceptions.UserAlreadyDeletedException;
 import com.project.bloodDonor.custom.exceptions.UserNotFoundException;
 import com.project.bloodDonor.entity.BloodDonorDAO;
-import com.project.bloodDonor.entity.BloodDonorEnitity;
 import com.project.bloodDonor.service.BloodDonorService;
-import com.project.bloodDonor.serviceImpl.BloodDonorServiceImpl;
 
 @CrossOrigin("*") 
 @RestController

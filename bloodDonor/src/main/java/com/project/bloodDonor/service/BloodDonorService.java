@@ -12,7 +12,7 @@ public interface BloodDonorService {
 	 BloodDonorEnitity addNewDonor(BloodDonorDAO dao) ;
 	 List<BloodDonorDAO> getAllusers();
 	 
-	// BloodDonorDAO getUserById(int id);
+	
 	 Object deleteDonor(int id) throws UserAlreadyDeletedException;
 	 //get donor data
 	 Object getMyProfile(String email) throws UserNotFoundException;

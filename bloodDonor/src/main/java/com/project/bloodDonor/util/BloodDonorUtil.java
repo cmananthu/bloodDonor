@@ -1,7 +1,6 @@
 package com.project.bloodDonor.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.project.bloodDonor.entity.BloodDonorDAO;
@@ -61,7 +60,7 @@ public class BloodDonorUtil {
 	 //method to calculate bmi, bmi=weight/height square
 	 private static double calculateBmi(BloodDonorDAO dao) {
 		 double height=dao.getHeight()/100;
-		 double bmi=dao.getWeight()/(height*height);
-		return bmi;
+		 return dao.getWeight()/(height*height);
+		
 	 }
 }
