@@ -1,6 +1,8 @@
 package com.project.bloodDonor.serviceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
@@ -92,26 +94,31 @@ public class BloodDonorServiceImplTest {
 			        }, "user with id " + 1 + " doesn't exists");
 			}
 			
-//			//test case for getMyProfile method based on id-exception
-//			@Test
-//			void testfindUserByIdException() throws UserNotFoundException {
-//				 Mockito.when(repo.findById(Mockito.any())).thenReturn(null);
-//				
-//				Assertions.assertThrows(UserNotFoundException.class, () -> {
-//					bloodDonorServiceImpl.findUserById(1);
-//		        }, "user with id "+1+" not found");
-//				
-//			}
-//			
-//			//test case for getMyProfile method based on id
-//			@Test
-//			void testfindUserById() throws UserNotFoundException {
-//				Optional<BloodDonorEnitity> e=Optional.of(new BloodDonorEnitity());
-//				 Mockito.when(repo.findById(Mockito.any())).thenReturn(e);
-//				 bloodDonorServiceImpl.findUserById(1);
-//				
-//				
-//			}
-//	
+			//test case for getMyProfile method based on id-exception
+			@Test
+			public void testFindUserByIdException() {
+			    // Arrange
+				 Mockito.when(repo.findById(1)).thenReturn(null);			    
+			    // Act and assert
+			    Exception exception = assertThrows(UserNotFoundException.class, () -> {
+			    	bloodDonorServiceImpl.findUserById(1);
+			    });
+			    
+			    String expectedMessage = "user with id 1 not found";
+			    String actualMessage = exception.getMessage();
+			    
+			    assertTrue(actualMessage.contains(expectedMessage));
+			}
+			
+			//test case for getMyProfile method based on id
+			@Test
+			void testfindUserById() throws UserNotFoundException {
+				BloodDonorEnitity e=new BloodDonorEnitity();
+				 Mockito.when(repo.findById(Mockito.anyInt())).thenReturn(e);
+				 bloodDonorServiceImpl.findUserById(1);
+				
+				
+			}
+ 	
 	
 }
