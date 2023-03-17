@@ -30,6 +30,7 @@ public class BloodDonorController {
 //	localhost:8085/bloodbank/add 
 //	endpoint to add donor details
 	@Operation(summary = "Add a new donor")
+	//Swagger- gives definition to the end points
 	@PostMapping("add")
 	public ResponseEntity<Object> addDonor( @Validated @RequestBody BloodDonorDAO dao){
 		return new ResponseEntity<>(service.addNewDonor(dao),HttpStatus.CREATED);
